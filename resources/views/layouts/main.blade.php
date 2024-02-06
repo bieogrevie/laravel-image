@@ -26,11 +26,36 @@
             flex: 1 1 auto;
             padding: 0rem;
         }
+
+        /* Custom styles for the modal */
+        .modal-dialog {
+            width: 800px;
+            /* Fixed width */
+            height: 600px;
+            /* Fixed height */
+            display: flex;
+            flex-direction: column;
+            /* Ensures the header, body, and footer are stacked */
+        }
+
+        .modal-content {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            /* Ensures the header, body, and footer are stacked */
+        }
+
+        .modal-body {
+            overflow-y: auto;
+            /* Enables scrolling within the modal body if content overflows */
+            flex-grow: 1;
+            /* Allows the body to expand to fill available space */
+        }
     </style>
 </head>
 
 <body>
-    <div class="container">
+    <div class="container mt-3">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
@@ -39,6 +64,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {{ request()->is('image/create') ? 'active' : '' }}" href="{{ url('/image/create') }}">UPLOAD IMAGE</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->is('image/create_multiple') ? 'active' : '' }}" href="{{ url('/image/create_multiple') }}">UPLOAD IMAGE MULTIPLE</a>
                     </li>
                 </ul>
             </div>
@@ -52,4 +80,5 @@
     @yield('script')
 
 </body>
+
 </html>
