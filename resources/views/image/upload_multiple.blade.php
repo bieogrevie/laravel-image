@@ -4,6 +4,43 @@
 <link rel="stylesheet" href="https://unpkg.com/cropperjs/dist/cropper.min.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://unpkg.com/cropperjs/dist/cropper.min.js"></script>
+<style>
+    .modal-body {
+        position: relative;
+        -ms-flex: 1 1 auto;
+        flex: 1 1 auto;
+        padding: 0rem;
+    }
+
+    .modal-dialog {
+        /* max-width: 100%; */
+        /* Adjust the max-width to fit the screen size */
+        margin: 30px auto;
+        /* Keep some space from the top and bottom */
+    }
+
+    .modal-content {
+        display: flex;
+        flex-direction: column;
+        /* Ensures the header, body, and footer are stacked */
+    }
+
+    .modal-header,
+    .modal-footer {
+        flex-shrink: 0;
+        /* Prevent the header and footer from shrinking */
+    }
+
+    .modal-body {
+        max-height: 750px;
+        /* Fixed max height for the modal body */
+        overflow-y: auto;
+        /* Enables scrolling within the modal body if content overflows */
+    }
+
+    /* Cropper container should adapt to the modal body while maintaining aspect ratio */
+
+</style>
 @endsection
 
 @section('content')

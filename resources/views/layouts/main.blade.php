@@ -9,49 +9,6 @@
 
     @yield('style')
 
-    <style>
-        .table img {
-            transition: transform 0.25s ease;
-            transform-origin: top left;
-        }
-
-        .table img:hover {
-            transform: scale(6);
-            z-index: 10;
-        }
-
-        .modal-body {
-            position: relative;
-            -ms-flex: 1 1 auto;
-            flex: 1 1 auto;
-            padding: 0rem;
-        }
-
-        /* Custom styles for the modal */
-        .modal-dialog {
-            width: 800px;
-            /* Fixed width */
-            height: 600px;
-            /* Fixed height */
-            display: flex;
-            flex-direction: column;
-            /* Ensures the header, body, and footer are stacked */
-        }
-
-        .modal-content {
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            /* Ensures the header, body, and footer are stacked */
-        }
-
-        .modal-body {
-            overflow-y: auto;
-            /* Enables scrolling within the modal body if content overflows */
-            flex-grow: 1;
-            /* Allows the body to expand to fill available space */
-        }
-    </style>
 </head>
 
 <body>
@@ -80,5 +37,4 @@
     @yield('script')
 
 </body>
-
 </html>

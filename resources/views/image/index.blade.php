@@ -1,5 +1,18 @@
 @extends('layouts.main')
 
+@section('style')
+<style>
+    .table img {
+        transition: transform 0.25s ease;
+        transform-origin: top left;
+    }
+
+    .table img:hover {
+        transform: scale(6);
+        z-index: 10;
+    }
+</style>
+@endsection
 @section('content')
 <div class="container mt-5">
     @if(session('success'))
@@ -11,9 +24,9 @@
     <h5>Image List</h5>
     <table class="table" width="100%">
         <thead>
-            <tr>
+            <tr class="btn-secondary">
                 <th style="width: 10%">ID</th>
-                <th style="width: 20%">Filename</th>
+                <th style="width: 30%">Filename</th>
                 <th style="width: 50%">Preview</th>
                 <th style="width: 20%">Actions</th>
             </tr>
