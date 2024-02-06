@@ -18,6 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/images', [ImageController::class, 'index']);
-Route::get('/upload', [ImageController::class, 'showForm']);
-Route::post('/upload/store', [ImageController::class, 'store'])->name('upload.store');
+Route::get('/image', [ImageController::class, 'index'])->name('image.index');
+Route::get('/image/create', [ImageController::class, 'create'])->name('image.create');
+Route::post('/image/store', [ImageController::class, 'store'])->name('image.store');
+Route::post('/image/destroy/{id}', [ImageController::class, 'destroy'])->name('image.destroy');

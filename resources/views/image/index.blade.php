@@ -1,31 +1,43 @@
-@extends('main')
+@extends('layouts.main')
 
 @section('content')
-
 <div class="container mt-5">
-    <h2>Image List</h2>
+    @if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+    @endif
 
-    <table class="table">
+    <h5>Image List</h5>
+    <table class="table" width="100%">
         <thead>
             <tr>
-                <th>ID</th>
-                <th>Filename</th>
-                <th>Preview</th>
+                <th style="width: 10%">ID</th>
+                <th style="width: 20%">Filename</th>
+                <th style="width: 50%">Preview</th>
+                <th style="width: 20%">Actions</th>
             </tr>
         </thead>
         <tbody>
             @foreach ($images as $image)
-                <tr>
-                    <td>{{ $image->id }}</td>
-                    <td>{{ $image->filename }}</td>
-                    <td>
-                        {{-- Sesuaikan path sesuai dengan lokasi penyimpanan gambar --}}
-                        <img src="{{ asset('storage/' . $image->filename) }}" alt="Preview" style="max-width: 200px; height: auto;">
-                    </td>
-                </tr>
+            <tr>
+                <td>{{ $image->id }}</td>
+                <td>{{ $image->filename }}</td>
+                <td>
+                    <img src="{{ asset('storage/' . $image->filename) }}" alt="Preview" style="max-height: 50px; height: auto;">
+                </td>
+                <td>
+                    <form action="{{ route('image.destroy', $image->id) }}" method="POST">
+                        @csrf
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this image?');">Delete</button>
+                    </form>
+                </td>
+            </tr>
             @endforeach
         </tbody>
     </table>
+    <div class="d-flex justify-content-center">
+        {{ $images->links('pagination::bootstrap-4') }}
+    </div>
 </div>
-
 @endsection
