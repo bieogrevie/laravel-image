@@ -23,23 +23,6 @@ class ImageController extends Controller
         return view('image.upload_multiple');
     }
 
-    public function store(Request $request)
-    {
-        $request->validate([
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-        ]);
-
-        $image = $request->file('image');
-        $imageName = time() . '.' . $image->getClientOriginalExtension();
-        $imagePath = Storage::disk('public')->put($imageName, file_get_contents($image));
-
-        $imageRecord = new Image;
-        $imageRecord->filename = $imageName;
-        $imageRecord->save();
-
-        return response()->json(['success' => 'Gambar berhasil diunggah dan disimpan.']);
-    }
-
     public function destroy($id)
     {
         $image = Image::findOrFail($id);
@@ -49,7 +32,7 @@ class ImageController extends Controller
         return redirect('/image')->with('success', 'Image deleted successfully');
     }
 
-    public function store_multiple(Request $request)
+    public function store(Request $request)
     {
         $images = $request->file('image');
 

@@ -22,9 +22,6 @@
                     <li class="nav-item">
                         <a class="nav-link {{ request()->is('image/create') ? 'active' : '' }}" href="{{ url('/image/create') }}">UPLOAD IMAGE</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link {{ request()->is('image/create_multiple') ? 'active' : '' }}" href="{{ url('/image/create_multiple') }}">UPLOAD IMAGE MULTIPLE</a>
-                    </li>
                 </ul>
             </div>
         </nav>
